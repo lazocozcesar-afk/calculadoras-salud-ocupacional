@@ -1,0 +1,17 @@
+{
+  "name": "calculadoras-salud-ocupacional",
+  "version": "0.1.0",
+  "description": "Calculadoras abiertas de medicina ocupacional para el Perú y Latinoamérica: audiometría (OMS, STS, AAO), ruido (dosis y TWA), espirometría (ERS/ATS 2022) y antropometría.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": "./src/index.js",
+  "files": ["src"],
+  "scripts": {
+    "test": "node --test test/",
+    "web": "npx --yes serve ."
+  },
+  "keywords": ["medicina-ocupacional", "salud-ocupacional", "audiometria", "espirometria", "ruido", "peru", "occupational-health"],
+  "author": "Cesar Lazo Coz",
+  "license": "MIT",
+  "engines": { "node": ">=18" }
+}

@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "Si usas este software en un trabajo o investigación, por favor cítalo así."
+title: "Calculadoras de Salud Ocupacional"
+authors:
+  - family-names: "Lazo Coz"
+    given-names: "Cesar"
+version: 0.1.0
+license: MIT
