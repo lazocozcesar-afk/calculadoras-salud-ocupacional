@@ -5,13 +5,25 @@
   "type": "module",
   "main": "src/index.js",
   "exports": "./src/index.js",
-  "files": ["src"],
+  "files": [
+    "src"
+  ],
   "scripts": {
-    "test": "node --test test/",
+    "test": "node --test test/*.test.js",
     "web": "npx --yes serve ."
   },
-  "keywords": ["medicina-ocupacional", "salud-ocupacional", "audiometria", "espirometria", "ruido", "peru", "occupational-health"],
+  "keywords": [
+    "medicina-ocupacional",
+    "salud-ocupacional",
+    "audiometria",
+    "espirometria",
+    "ruido",
+    "peru",
+    "occupational-health"
+  ],
   "author": "Cesar Lazo Coz",
   "license": "MIT",
-  "engines": { "node": ">=18" }
+  "engines": {
+    "node": ">=18"
+  }
 }
