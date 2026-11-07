@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lazocozcesar-afk.github.io/calculadoras-salud-ocupacional/sitemap.xml

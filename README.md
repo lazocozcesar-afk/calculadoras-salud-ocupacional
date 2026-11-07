@@ -33,6 +33,16 @@ python -m http.server
 
 y entra a `http://localhost:3000` (o `http://localhost:8000`).
 
+### Editar las páginas y el SEO
+
+Las páginas (`index.html`, `audiometria/`, `ruido/`, `espirometria/`, `imc/`) y el `sitemap.xml` se generan con:
+
+```bash
+python herramientas/generar_paginas.py
+```
+
+Los títulos, descripciones, textos y preguntas frecuentes se editan en ese script; el código común está en `assets/`.
+
 ## Usar la biblioteca
 
 ```js

@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora de dosis de ruido y TWA 8 horas (NIOSH, OSHA)</title>
+<meta name="description" content="Calcula gratis la dosis de ruido, el TWA de 8 horas y la atenuación del protector (NRR) con los criterios NIOSH 85 dB/3 dB y OSHA 90 dB/5 dB.">
+<meta name="author" content="Dr. César Lazo Coz">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://lazocozcesar-afk.github.io/calculadoras-salud-ocupacional/ruido/">
+<link rel="icon" href="../assets/icono.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icono-180.png">
+<meta name="theme-color" content="#0f6e6e">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_PE">
+<meta property="og:site_name" content="Calculadoras de Salud Ocupacional">
+<meta property="og:title" content="Calculadora de dosis de ruido y TWA 8 horas (NIOSH, OSHA)">
+<meta property="og:description" content="Calcula gratis la dosis de ruido, el TWA de 8 horas y la atenuación del protector (NRR) con los criterios NIOSH 85 dB/3 dB y OSHA 90 dB/5 dB.">
+<meta property="og:url" content="https://lazocozcesar-afk.github.io/calculadoras-salud-ocupacional/ruido/">
+<meta property="og:image" content="https://lazocozcesar-afk.github.io/calculadoras-salud-ocupacional/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../assets/estilos.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebApplication",
+   "@id": "https://lazocozcesar-afk.github.io/calculadoras-salud-ocupacional/ruido/#app",
+   "name": "Calculadora de dosis de ruido ocupacional",
+   "url": "https://lazocozcesar-afk.github.io/calculadoras-salud-ocupacional/ruido/",
+   "description": "Calcula gratis la dosis de ruido, el TWA de 8 horas y la atenuación del protector (NRR) con los criterios NIOSH 85 dB/3 dB y OSHA 90 dB/5 dB.",
+   "applicationCategory": "HealthApplication",
+   "operatingSystem": "Web",
+   "inLanguage": "es",
+   "isAccessibleForFree": true,
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "PEN"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "César Lazo Coz",
+    "honorificPrefix": "Dr.",
+    "jobTitle": "Médico cirujano",
+    "knowsAbout": [
+     "Medicina ocupacional",
+     "Salud ocupacional",
+     "Vigilancia médica de trabajadores"
+    ],
+    "sameAs": [
+     "https://github.com/lazocozcesar-afk"
+    ]
+   },
+   "dateModified": "2026-11-07",
+   "audience": {
+    "@type": "MedicalAudience",
+    "audienceType": "Médicos ocupacionales y profesionales de la salud"
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "¿Cuál es el límite de ruido para 8 horas en el Perú?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "El DS 024-2016-EM (minería) fija 85 dB(A) para una jornada de 8 horas, el mismo valor que recomienda NIOSH con un intercambio de 3 dB."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "¿Cómo se calcula la dosis de ruido?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Se suman las horas de cada tarea divididas entre el tiempo permitido para su nivel y se multiplica por 100. Más de 100 % supera el límite."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "¿Qué diferencia hay entre el criterio de NIOSH y el de OSHA?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "NIOSH usa 85 dB(A) y un intercambio de 3 dB (cada 3 dB más, el tiempo permitido se reduce a la mitad); OSHA usa 90 dB(A) y 5 dB, que es menos protector."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "¿Cuánto protege realmente un tapón con NRR 25?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Con la corrección del OSHA Technical Manual, (25 − 7) × 0,5 = 9 dB de atenuación estimada."
+     }
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Calculadoras de Salud Ocupacional",
+     "item": "https://lazocozcesar-afk.github.io/calculadoras-salud-ocupacional/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Calculadora de dosis de ruido ocupacional",
+     "item": "https://lazocozcesar-afk.github.io/calculadoras-salud-ocupacional/ruido/"
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header>
+  <p class="migas"><a href="https://lazocozcesar-afk.github.io/calculadoras-salud-ocupacional/">Calculadoras de Salud Ocupacional</a></p>
+  <h1>Calculadora de dosis de ruido ocupacional</h1>
+  <p><strong>Desarrollado por el Dr. César Lazo Coz</strong> · Actualizado el 2026-11-07</p>
+  <p>Suma varias tareas de la jornada y obtén la dosis de ruido en %, el TWA de 8 horas y el nivel estimado con protector auditivo. Los datos se calculan en tu navegador y no se envían a ningún servidor.</p>
+  <nav aria-label="Calculadoras">
+    <a href="../">Inicio</a>
+    <a href="../audiometria/">Audiometría</a>
+    <a href="../ruido/" aria-current="page">Ruido</a>
+    <a href="../espirometria/">Espirometría</a>
+    <a href="../imc/">IMC y cintura</a>
+  </nav>
+</header>
+
+<main>
+
+  <section id="ruido" class="activa">
+    <h2>Calculadora de dosis de ruido y nivel de 8 horas</h2>
+    <div class="campos">
+      <div><label for="criterio">Criterio</label>
+        <select id="criterio">
+          <option value="85-3">85 dB(A) / 3 dB (NIOSH, DS 024-2016-EM)</option>
+          <option value="90-5">90 dB(A) / 5 dB (OSHA)</option>
+        </select></div>
+      <div><label for="nrr">NRR del protector (opcional)</label><input id="nrr" type="number" min="0" step="1" placeholder="p. ej. 25"></div>
+    </div>
+    <h3>Tareas de la jornada</h3>
+    <div id="filas-ruido"></div>
+    <button class="quitar" id="agregar-ruido" type="button" style="padding:6px 12px">+ Agregar tarea</button>
+    <br><button class="boton" id="calc-ruido">Calcular</button>
+    <div class="resultado" id="res-ruido" aria-live="polite"></div>
+    <p class="fuente">Fuentes: NIOSH 98-126 (1998); OSHA 29 CFR 1910.95 Apéndice A; OSHA Technical Manual, sección III, cap. 5 (NRR − 7) × 50 %.</p>
+  </section>
+
+  <p class="aviso">Herramienta de apoyo para profesionales de la salud. No reemplaza el juicio clínico ni la normativa vigente; verifica siempre con la fuente oficial.</p>
+
+  <div class="contenido">
+
+    <h2>¿Qué calcula esta herramienta?</h2>
+    <p>Es una <strong>calculadora de dosis de ruido</strong> para evaluar la exposición diaria de un trabajador que pasa por varias tareas con distinto nivel sonoro. Entrega la <strong>dosis en %</strong>, el <strong>nivel promedio ponderado de 8 horas (TWA)</strong> y, si ingresas el NRR, el nivel estimado dentro del protector.</p>
+    <h2>Criterios disponibles</h2>
+    <ul>
+      <li><strong>85 dB(A) con intercambio de 3 dB</strong>: NIOSH (publicación 98-126). Es el mismo límite de 8 horas que usa el DS 024-2016-EM para minería en el Perú.</li>
+      <li><strong>90 dB(A) con intercambio de 5 dB</strong>: OSHA 29 CFR 1910.95.</li>
+    </ul>
+    <h2>Fórmulas</h2>
+    <p>Tiempo permitido: <strong>T = 8 ÷ 2<sup>(L − criterio) ÷ intercambio</sup></strong> horas. Con 85/3 dB, a 88 dB(A) se permiten 4 h y a 94 dB(A), 1 h.</p>
+    <p>Dosis: <strong>D = Σ (horas de exposición ÷ tiempo permitido) × 100 %</strong>. Una dosis mayor de 100 % supera el límite.</p>
+    <p>Nivel de 8 horas: <strong>TWA = criterio + (intercambio ÷ log<sub>10</sub>2) × log<sub>10</sub>(D)</strong>.</p>
+    <p><em>Ejemplo (NIOSH):</em> 3 h a 92 dB(A) y 5 h a 80 dB(A) dan una dosis de <strong>209 %</strong> y un TWA de <strong>88,2 dB(A)</strong>: supera el límite.</p>
+    <h2>Protector auditivo (NRR)</h2>
+    <p>El NRR de la etiqueta sobrestima la protección real. El OSHA Technical Manual recomienda restar 7 y aplicar un 50 %: <strong>atenuación = (NRR − 7) × 0,5</strong>. Un tapón NRR 25 frente a 95 dB(A) deja unos 86 dB(A).</p>
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿Cuál es el límite de ruido para 8 horas en el Perú?</summary><p>El DS 024-2016-EM (minería) fija 85 dB(A) para una jornada de 8 horas, el mismo valor que recomienda NIOSH con un intercambio de 3 dB.</p></details>
+    <details><summary>¿Cómo se calcula la dosis de ruido?</summary><p>Se suman las horas de cada tarea divididas entre el tiempo permitido para su nivel y se multiplica por 100. Más de 100 % supera el límite.</p></details>
+    <details><summary>¿Qué diferencia hay entre el criterio de NIOSH y el de OSHA?</summary><p>NIOSH usa 85 dB(A) y un intercambio de 3 dB (cada 3 dB más, el tiempo permitido se reduce a la mitad); OSHA usa 90 dB(A) y 5 dB, que es menos protector.</p></details>
+    <details><summary>¿Cuánto protege realmente un tapón con NRR 25?</summary><p>Con la corrección del OSHA Technical Manual, (25 − 7) × 0,5 = 9 dB de atenuación estimada.</p></details>
+  </div>
+</main>
+
+<footer>
+  <p>Proyecto de código abierto (licencia MIT) del Dr. César Lazo Coz. Reporta errores o propone mejoras en <a href="https://github.com/lazocozcesar-afk/calculadoras-salud-ocupacional">GitHub</a>.</p>
+  <p><a href="../">Inicio</a> · <a href="../audiometria/">Audiometría</a> · <a href="../ruido/">Ruido</a> · <a href="../espirometria/">Espirometría</a> · <a href="../imc/">IMC y cintura</a></p>
+</footer>
+
+<script type="module" src="../assets/app.js"></script>
+</body>
+</html>
