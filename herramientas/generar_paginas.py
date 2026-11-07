@@ -14,7 +14,7 @@ RAIZ = Path(__file__).resolve().parent.parent
 BASE = "https://lazocozcesar-afk.github.io/calculadoras-salud-ocupacional/"
 REPO = "https://github.com/lazocozcesar-afk/calculadoras-salud-ocupacional"
 HOY = date.today().isoformat()
-SITIO = "Calculadoras de Salud Ocupacional"
+SITIO = "Calculadora de Medicina Ocupacional"
 
 AUTOR = {
     "@type": "Person",
@@ -248,7 +248,7 @@ PAGINAS = [
 ]
 
 PORTADA = {
-    "titulo": "Calculadoras de Salud Ocupacional gratis | Audiometría y ruido",
+    "titulo": "Calculadora de Medicina Ocupacional | Audiometría, ruido, espirometría",
     "descripcion": "Calculadoras gratis de medicina ocupacional: audiometría OMS y STS, dosis de ruido, espirometría ERS/ATS 2022 e IMC. Con la fuente de cada fórmula.",
     "contenido": """
     <h2>Calculadoras para el examen médico ocupacional</h2>
