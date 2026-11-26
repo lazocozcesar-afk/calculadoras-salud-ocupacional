@@ -258,6 +258,7 @@ PORTADA = {
       <li><a href="ruido/"><strong>Calculadora de dosis de ruido</strong></a> — dosis diaria, TWA de 8 horas y protector auditivo (NRR).</li>
       <li><a href="espirometria/"><strong>Interpretación de espirometría</strong></a> — patrón y gravedad por z-score según ERS/ATS 2022.</li>
       <li><a href="imc/"><strong>IMC y perímetro abdominal</strong></a> — clasificación OMS y riesgo según el MINSA.</li>
+      <li><a href="evaluacion/"><strong>Evaluación final cronometrada</strong></a> — 50 preguntas de medicina ocupacional con temporizador, nota por tema y explicación de cada respuesta.</li>
     </ul>""",
     "faq": [
         ("¿Las calculadoras son gratuitas?",
@@ -266,6 +267,119 @@ PORTADA = {
          "No. Todos los cálculos se hacen en tu navegador y ningún dato se envía a un servidor."),
         ("¿En qué normas se basan?",
          "OMS World Report on Hearing 2021, OSHA 29 CFR 1910.95 y 1904.10, AAO 1979, NIOSH 98-126, ERS/ATS 2022, OMS TRS 894 y la RM 184-2012/MINSA."),
+    ],
+}
+
+
+# ---------------------------------------------------------------- evaluación
+EVALUACION = {
+    "slug": "evaluacion",
+    "menu": "Evaluación final",
+    "titulo": "Evaluación final de Medicina Ocupacional: 50 preguntas cronometradas",
+    "descripcion": "Examen cronometrado de 50 preguntas de medicina ocupacional: audiometría, ruido, espirometría, IMC, Ley 29783 y toxicología. Nota por tema y explicación con fuente.",
+    "h1": "Evaluación final cronometrada",
+    "resumen": "50 preguntas de opción múltiple sobre audiometría, ruido, espirometría, antropometría, normativa peruana y toxicología, con temporizador y explicación de cada respuesta.",
+    "privacidad": "Tus respuestas se guardan solo en tu navegador y no se envían a ningún servidor.",
+    "cuerpo": """
+  <section id="ev-inicio" class="activa ev-vista">
+    <h2>Antes de empezar</h2>
+    <ul class="ev-reglas">
+      <li><b id="ev-total">50</b> preguntas de opción múltiple con una sola respuesta correcta.</li>
+      <li>El temporizador empieza al pulsar <b>Comenzar</b>. Al llegar a cero el examen se entrega solo.</li>
+      <li>Puedes avanzar, retroceder, cambiar respuestas y <b>marcar</b> preguntas para revisarlas.</li>
+      <li>Se aprueba con <b>70 %</b> o más. Al final verás tu nota por tema y la explicación con su fuente.</li>
+      <li>Si cierras o recargas la página, el intento se recupera, pero el tiempo sigue corriendo.</li>
+    </ul>
+    <div class="campos">
+      <div><label for="ev-minutos">Tiempo total</label>
+        <select id="ev-minutos">
+          <option value="50">50 minutos (1 min por pregunta)</option>
+          <option value="60" selected>60 minutos</option>
+          <option value="75">75 minutos</option>
+          <option value="90">90 minutos</option>
+        </select></div>
+      <div class="ev-check"><label><input type="checkbox" id="ev-aleatorio" checked> Mezclar preguntas y alternativas</label></div>
+    </div>
+    <button class="boton" id="ev-comenzar" type="button">Comenzar evaluación</button>
+    <p class="fuente">Atajos de teclado: A–D o 1–4 para responder; ← y → para cambiar de pregunta.</p>
+  </section>
+
+  <section id="ev-examen" class="activa ev-vista" hidden>
+    <div class="ev-barra" role="region" aria-label="Estado del examen">
+      <div class="ev-barra-fila">
+        <span class="ev-reloj" id="ev-reloj" role="timer" aria-label="Tiempo restante">--:--</span>
+        <span class="ev-progreso" id="ev-progreso">0/50 respondidas</span>
+        <button class="ev-finalizar" id="ev-finalizar" type="button">Finalizar</button>
+      </div>
+      <div class="ev-pista" aria-hidden="true"><i id="ev-barra-tiempo"></i></div>
+      <div class="ev-pista ev-pista-prog" aria-hidden="true"><i id="ev-barra-progreso"></i></div>
+    </div>
+    <div class="ev-tarjeta" id="ev-tarjeta">
+      <p class="ev-meta"><span id="ev-numero"></span> · <span id="ev-tema"></span></p>
+      <h2 id="ev-enunciado" tabindex="-1"></h2>
+      <fieldset class="ev-opciones" id="ev-opciones"><legend class="sr">Alternativas</legend></fieldset>
+      <div class="ev-controles">
+        <button type="button" class="ev-sec" id="ev-anterior">← Anterior</button>
+        <button type="button" class="ev-sec" id="ev-marcar" aria-pressed="false">☆ Marcar para revisar</button>
+        <button type="button" class="boton" id="ev-siguiente">Siguiente →</button>
+      </div>
+    </div>
+    <h3>Mapa de preguntas</h3>
+    <p class="ev-leyenda"><span class="ev-l respondida"></span> respondida <span class="ev-l marcada"></span> marcada <span class="ev-l"></span> pendiente</p>
+    <div class="ev-mapa" id="ev-mapa"></div>
+    <dialog id="ev-confirmar">
+      <p id="ev-confirmar-texto"></p>
+      <div class="ev-controles">
+        <button type="button" class="ev-sec" id="ev-no">Seguir respondiendo</button>
+        <button type="button" class="boton" id="ev-si">Finalizar y ver resultado</button>
+      </div>
+    </dialog>
+  </section>
+
+  <section id="ev-resultado" class="activa ev-vista" hidden>
+    <h2>Resultado</h2>
+    <div class="ev-resumen">
+      <div class="ev-anillo" id="ev-anillo"><span id="ev-pct">0 %</span></div>
+      <div>
+        <p class="ev-veredicto" id="ev-veredicto"></p>
+        <p class="ev-nota"><b id="ev-nota"></b> correctas</p>
+        <p class="fuente" id="ev-tiempo-usado"></p>
+      </div>
+    </div>
+    <h3>Resultado por tema</h3>
+    <div id="ev-temas"></div>
+    <div class="ev-controles">
+      <button type="button" class="boton" id="ev-repetir-errores">Practicar solo las falladas</button>
+      <button type="button" class="ev-sec" id="ev-otra-vez">Nuevo intento completo</button>
+    </div>
+    <h3>Revisión de respuestas</h3>
+    <div class="ev-filtros">
+      <button type="button" class="ev-sec" data-filtro="todas" aria-pressed="true">Todas</button>
+      <button type="button" class="ev-sec" data-filtro="errores" aria-pressed="false">Solo errores</button>
+    </div>
+    <div id="ev-revision"></div>
+  </section>""",
+    "contenido": """
+    <h2>Qué evalúa</h2>
+    <table>
+      <tr><th>Tema</th><th>Preguntas</th></tr>
+      <tr><td>Audiometría (OMS 2021, STS de OSHA, AAO 1979)</td><td>10</td></tr>
+      <tr><td>Ruido (NIOSH, OSHA, NRR, DS 024-2016-EM)</td><td>8</td></tr>
+      <tr><td>Espirometría (ERS/ATS 2022, ATS/ERS 2019)</td><td>8</td></tr>
+      <tr><td>Antropometría (OMS, RM 184-2012/MINSA)</td><td>4</td></tr>
+      <tr><td>Normativa peruana (Ley 29783, DS 005-2012-TR, Ley 30222, SCTR)</td><td>10</td></tr>
+      <tr><td>Toxicología y otros riesgos (metales, sílice, asbesto, benceno, PEP, ergonomía, calor)</td><td>10</td></tr>
+    </table>
+    <p>Cada respuesta incluye una explicación breve y la fuente publicada en la que se basa. Para repasar los cálculos, usa las calculadoras de <a href="../audiometria/">audiometría</a>, <a href="../ruido/">ruido</a>, <a href="../espirometria/">espirometría</a> e <a href="../imc/">IMC</a>.</p>""",
+    "faq": [
+        ("¿Cuánto dura la evaluación final?",
+         "Por defecto 60 minutos para 50 preguntas; puedes elegir 50, 75 o 90 minutos antes de comenzar. Al acabarse el tiempo el examen se entrega automáticamente."),
+        ("¿Con qué nota se aprueba?",
+         "Con 70 % o más de respuestas correctas, es decir, 35 de 50."),
+        ("¿Puedo ver las respuestas correctas?",
+         "Sí. Al finalizar se muestra cada pregunta con la alternativa correcta, una explicación y su fuente, y puedes practicar solo las que fallaste."),
+        ("¿Se envían mis respuestas a algún servidor?",
+         "No. El examen funciona en tu navegador y el progreso se guarda solo en tu equipo."),
     ],
 }
 
@@ -292,7 +406,8 @@ def faq_ld(faq):
     }
 
 
-def pagina(*, url, titulo, descripcion, h1, resumen, nav, cuerpo, contenido, faq, grafo, pre):
+def pagina(*, url, titulo, descripcion, h1, resumen, nav, cuerpo, contenido, faq, grafo, pre,
+           script="assets/app.js", privacidad="Los datos se calculan en tu navegador y no se envían a ningún servidor."):
     return f"""<!doctype html>
 <html lang="es">
 <head>
@@ -324,7 +439,7 @@ def pagina(*, url, titulo, descripcion, h1, resumen, nav, cuerpo, contenido, faq
   <p class="migas"><a href="{BASE}">{SITIO}</a></p>
   <h1>{escape(h1)}</h1>
   <p><strong>Desarrollado por el Dr. César Lazo Coz</strong> · Actualizado el {HOY}</p>
-  <p>{escape(resumen)} Los datos se calculan en tu navegador y no se envían a ningún servidor.</p>
+  <p>{escape(resumen)} {escape(privacidad)}</p>
 {nav}
 </header>
 
@@ -341,10 +456,10 @@ def pagina(*, url, titulo, descripcion, h1, resumen, nav, cuerpo, contenido, faq
 
 <footer>
   <p>Proyecto de código abierto (licencia MIT) del Dr. César Lazo Coz. Reporta errores o propone mejoras en <a href="{REPO}">GitHub</a>.</p>
-  <p><a href="{pre}">Inicio</a> · {" · ".join(f'<a href="{pre}{p["slug"]}/">{p["menu"]}</a>' for p in PAGINAS)}</p>
+  <p><a href="{pre}">Inicio</a> · {" · ".join(f'<a href="{pre}{p["slug"]}/">{p["menu"]}</a>' for p in PAGINAS)} · <a href="{pre}{EVALUACION["slug"]}/">{EVALUACION["menu"]}</a></p>
 </footer>
 
-<script type="module" src="{pre}assets/app.js"></script>
+<script type="module" src="{pre}{script}"></script>
 </body>
 </html>
 """
@@ -398,7 +513,7 @@ def main():
         nav = '  <nav aria-label="Calculadoras">\n    <a href="../">Inicio</a>\n' + "\n".join(
             f'    <a href="../{q["slug"]}/"' + (' aria-current="page"' if q is p else "") + f'>{q["menu"]}</a>'
             for q in PAGINAS
-        ) + "\n  </nav>"
+        ) + f'\n    <a href="../{EVALUACION["slug"]}/">{EVALUACION["menu"]}</a>\n  </nav>'
         grafo = [
             app_ld(url, p["h1"], p["descripcion"]),
             faq_ld(p["faq"]),
@@ -413,8 +528,32 @@ def main():
         (RAIZ / p["slug"]).mkdir(exist_ok=True)
         (RAIZ / p["slug"] / "index.html").write_text(html, encoding="utf-8")
 
+    # Evaluación final cronometrada
+    ev = EVALUACION
+    url = BASE + ev["slug"] + "/"
+    nav = '  <nav aria-label="Calculadoras">\n    <a href="../">Inicio</a>\n' + "\n".join(
+        f'    <a href="../{q["slug"]}/">{q["menu"]}</a>' for q in PAGINAS
+    ) + f'\n    <a href="../{ev["slug"]}/" aria-current="page">{ev["menu"]}</a>\n  </nav>'
+    grafo = [
+        {"@type": "Quiz", "@id": url + "#quiz", "name": ev["h1"], "url": url, "description": ev["descripcion"],
+         "inLanguage": "es", "isAccessibleForFree": True, "author": AUTOR, "dateModified": HOY,
+         "educationalLevel": "Profesional", "timeRequired": "PT60M",
+         "about": ["Medicina ocupacional", "Audiometría", "Ruido ocupacional", "Espirometría", "Ley 29783"],
+         "audience": {"@type": "MedicalAudience", "audienceType": "Médicos ocupacionales y profesionales de la salud"}},
+        faq_ld(ev["faq"]),
+        {"@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": SITIO, "item": BASE},
+            {"@type": "ListItem", "position": 2, "name": ev["h1"], "item": url},
+        ]},
+    ]
+    html = pagina(url=url, titulo=ev["titulo"], descripcion=ev["descripcion"], h1=ev["h1"], resumen=ev["resumen"],
+                  nav=nav, cuerpo=ev["cuerpo"], contenido=ev["contenido"], faq=ev["faq"], grafo=grafo, pre="../",
+                  script="assets/evaluacion.js", privacidad=ev["privacidad"])
+    (RAIZ / ev["slug"]).mkdir(exist_ok=True)
+    (RAIZ / ev["slug"] / "index.html").write_text(html, encoding="utf-8")
+
     # Sitemap
-    urls = [BASE] + [BASE + p["slug"] + "/" for p in PAGINAS]
+    urls = [BASE] + [BASE + p["slug"] + "/" for p in PAGINAS] + [BASE + EVALUACION["slug"] + "/"]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(
         f"  <url>\n    <loc>{u}</loc>\n    <lastmod>{HOY}</lastmod>\n  </url>\n" for u in urls
     ) + "</urlset>\n"

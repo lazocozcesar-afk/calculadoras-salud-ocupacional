@@ -20,6 +20,7 @@ Se pueden usar de dos formas:
 | Ruido | Suma de niveles y nivel con protector auditivo (NRR) | OSHA Technical Manual, sec. III cap. 5 |
 | Espirometría | Patrón y gravedad por z-score; respuesta broncodilatadora | ERS/ATS 2022 (Stanojevic et al., *Eur Respir J*) |
 | Antropometría | IMC y riesgo por perímetro abdominal | OMS TRS 894; RM 184-2012/MINSA |
+| Evaluación final | Examen cronometrado de 50 preguntas con nota por tema y explicación de cada respuesta (`evaluacion/`) | Cada pregunta cita su fuente en `assets/evaluacion-preguntas.js` |
 
 ## Usar la página web
 
@@ -35,7 +36,7 @@ y entra a `http://localhost:3000` (o `http://localhost:8000`).
 
 ### Editar las páginas y el SEO
 
-Las páginas (`index.html`, `audiometria/`, `ruido/`, `espirometria/`, `imc/`) y el `sitemap.xml` se generan con:
+Las páginas (`index.html`, `audiometria/`, `ruido/`, `espirometria/`, `imc/`, `evaluacion/`) y el `sitemap.xml` se generan con:
 
 ```bash
 python herramientas/generar_paginas.py
